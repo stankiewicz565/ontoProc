@@ -107,42 +107,6 @@ get_onto = function(stub) {
 dmsg = function(x) .Deprecated(x, msg = sprintf("%s is deprecated: getOnto('%s') should be used for versioned access.", x, x)) 
 
 
-
-#' basic getters in old style, retained 2023 for deprecation interval
-#' @rdname getCellOnto
-#' @aliases getChebiLite
-#' @export
-getChebiLite = function() {
- dmsg("chebi_lite")
- get_onto("chebi_lite")
-}
-
-#' @rdname getCellOnto
-#' @aliases getCellosaurusOnto
-#' @export
-getCellosaurusOnto = function() {
- dmsg("cellosaurus")
- get_onto("cellosaurusOnto")
-}
-
-#' @rdname getCellOnto
-#' @aliases getUBERON_NE
-#' @export
-getUBERON_NE = function() {
- dmsg("uberon")
- get_onto("uberon")
-}
-
-#' @rdname getCellOnto
-#' @aliases getChebiOnto
-#' @note getChebiOnto loads ontoRda/chebi_full.rda
-#' @export
-getChebiOnto = function() {
- dmsg("chebi_full")
- get_onto("chebi_full")
-}
-
-
 #' @rdname getCellOnto
 #' @aliases getOncotreeOnto
 #' @note getOncotreeOnto loads ontoRda/oncotree.rda
@@ -152,62 +116,6 @@ getOncotreeOnto = function() {
  get_onto("oncotree")
 }
 
-#' @rdname getCellOnto
-#' @aliases getDiseaseOnto
-#' @export
-getDiseaseOnto = function() {
- dmsg("diseaseOnto")
- get_onto("diseaseOnto")
-}
-
-
-#' @rdname getCellOnto
-#' @aliases getGeneOnto
-#' @note getDiseaseOnto loads ontoRda/diseaseOnto.rda
-#' @export
-getGeneOnto = function() {
- dmsg("goOnto")
- get_onto("goOnto")
-}
-
-#' @rdname getCellOnto
-#' @aliases getHCAOnto
-#' @note getHCAOnto loads ontoRda/hcaOnto.rda produced from hcao.owl at https://github.com/HumanCellAtlas/ontology/releases/tag/1.0.6 2/11/2019,
-#' python pronto was used to convert OWL to OBO.
-#' @export
-getHCAOnto = function() {
- dmsg("hcaOnto")
- get_onto("hcaOnto")
-}
-
-#' @rdname getCellOnto
-#' @aliases getPROnto
-#' @note getPROnto loads ontoRda/PRonto.rda, produced from http://purl.obolibrary.org/obo/pr.obo 'reasoned' ontology from OBO foundry, 02-08-2019.
-#' In contrast to other ontologies, this is imported via get_OBO with
-#' `extract_tags='minimal'`.
-#' @export
-getPROnto = function() {
- dmsg("PROonto")
- get_onto("PROonto")
-}
-
-
-#' @rdname getCellOnto
-#' @aliases getPATOnto
-#' @note getPATOnto loads ontoRda/patoOnto.rda, produced from https://raw.githubusercontent.com/pato-ontology/pato/master/pato.obo from OBO foundry, 02-08-2019.
-#' @export
-getPATOnto = function() {
- dmsg("patoOnto")
- get_onto("patoOnto")
-}
-
-#' @rdname getCellOnto
-#' @aliases getMondoOnto
-#' @export
-getMondoOnto = function() {
- dmsg("mondo")
- get_onto("mondo_2021_04_07")
-}
 
 #' @rdname getCellOnto
 #' @aliases getSIOOnto
