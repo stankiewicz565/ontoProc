@@ -1,5 +1,3 @@
-
-
 # April 2023 information in AnnotationHub for Bioc 3.17
 # opd =query(ah, "ontoProcData")
 # meta = mcols(opd)
