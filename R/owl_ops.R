@@ -1,13 +1,20 @@
 
 #' return a generator with ontology classes 
+#' @import basilisk 
 #' @param owlfile reference to OWL file, can be URL, will be processed
 #' by owlready2.get_ontology
 #' @return generator with output of classes() on the loaded ontology
-get_classes = function(owlfile) {
- o2 = reticulate::import("owlready2") # 'cached' by reticulate?
- o2$get_ontology(owlfile)$load()$classes()
+get_classes = function(owlfile){
+  cl <- basilisk::basiliskStart(env=ontoProc_env)
+  o2 <- basilisk::basiliskRun(env=cl, function() {
+    X <- reticulate::import("owlready2") # 'cached' by reticulate?
+    names(X)
+    
+    })
+  basiliskStop(cl)
+  list(o2=02)
 }
- 
+
 #' construct owlents instance from an owl file
 #' @importFrom reticulate import iterate
 #' @param owlfn character(1) path to valid owl ontology
