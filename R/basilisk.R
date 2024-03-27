@@ -1,7 +1,8 @@
 #' @importFrom basilisk BasiliskEnvironment
-ontoProc_env <- basilisk::BasiliskEnvironment(envname="ontoProc_env",
+bsklenv <- basilisk::BasiliskEnvironment(envname="bsklenv",
                               pkgname="ontoProc",
-                              packages=c("owlready2==0.45")
+                              packages="python=3.9",
+                              pip="owlready2==0.45"
 )
 
 #Python 3.10.12

@@ -5,14 +5,12 @@
 #' by owlready2.get_ontology
 #' @return generator with output of classes() on the loaded ontology
 get_classes = function(owlfile){
-  cl <- basilisk::basiliskStart(env=ontoProc_env)
-  o2 <- basilisk::basiliskRun(env=cl, function() {
-    X <- reticulate::import("owlready2") # 'cached' by reticulate?
-    names(X)
-    
-    })
-  basiliskStop(cl)
-  list(o2=02)
+  cl = basilisk::basiliskStart(env=bsklenv)
+   basilisk::basiliskRun(env=cl, function() {
+     o2 = reticulate::import("owlready2") # 'cached' by reticulate?
+     o2$get_ontology(owlfile)$load()$classes()
+    }, owlfile)
+  #basiliskStop(cl)
 }
 
 #' construct owlents instance from an owl file
