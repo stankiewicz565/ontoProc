@@ -216,11 +216,14 @@ labelsOLD.owlents = function(object, ...) {
 #' ol = search_labels(orde, "*Immunog*")
 #' plot(orde, names(ol))
 #' @export
-search_labels = function (oents, regexp, case_sensitive=TRUE) 
+search_labels= function (oents, regexp, case_sensitive=TRUE) 
 {
-#
-#search(_use_str_as_loc_str=True, _case_sensitive=True, _bm25=False, **kargs)
-#
+  #
+  #search(_use_str_as_loc_str=True, _case_sensitive=True, _bm25=False, **kargs)
+  # 
+  proc = basilisk::basiliskStart(bsklenv)
+  on.exit(basilisk::basiliskStop(proc))
+  basilisk::basiliskRun(proc, function(oents ) {
     stopifnot(inherits(oents, "owlents"))
     thecall = match.call()
     o2 = reticulate::import("owlready2")
@@ -231,6 +234,5 @@ search_labels = function (oents, regexp, case_sensitive=TRUE)
     allv = lapply(lans, function(x) x$label[0])
     alln = lapply(lans, function(x) x$name)
     names(allv) = unlist(alln)
-    allv
+    allv},oents=oents)
 }
-
