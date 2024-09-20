@@ -29,8 +29,9 @@ setup_entities = function(owlfn) {
   ans
 }
 
-#' retrieve ancestor 'sets'
-#' @param oe owlents instance
+#' retrieve ancestor 'sets' 
+#' @importFrom reticulate import iterate
+#' @param owlfn character(1) path to valid owl ontology
 #' @return a list of sets
 #' @examples
 #' pa = get_ordo_owl_path()
@@ -39,16 +40,17 @@ setup_entities = function(owlfn) {
 #' ancestors(orde[1:5])
 #' labels(orde[1:5])
 #' @export
-ancestors_work = function(pa) {
+ancestors_work = function(owlfn) {
   #proc = basilisk::basiliskStart(bsklenv)
   #on.exit(basilisk::basiliskStop(proc))
   #basilisk::basiliskRun(proc, function(pa) {
+  thecall = match.call()
   o2 = reticulate::import("owlready2")
   ont = o2$get_ontology(owlfn)$load()
   cl = ont$classes()
-  clnames = iterate(cl, function(x) x$name) # exhausts cl
+  clnames = reticulate::iterate(cl, function(x) x$name) # exhausts cl
   ents = ont$classes()  # new iterator
-  allents = iterate(ents)
+  allents = reticulate::iterate(ents)
   oe = list(clnames=clnames, allents=allents, owlfn=owlfn, 
              iri=ont$base_iri, call=thecall)
   class(oe) = c("owlents", "list")
@@ -56,6 +58,15 @@ ancestors_work = function(pa) {
   names(ans) = oe$clnames
   ans
 }
+
+pa = get_ordo_owl_path()
+ #orde = setup_entities(pa)
+
+ oede = ancestors_work(pa)
+ #labels(orde[1:5])
+
+
+
 
 
 
