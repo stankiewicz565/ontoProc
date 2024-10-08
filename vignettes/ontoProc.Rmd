@@ -50,29 +50,15 @@ ontology objects.
 ```{r setup,echo=FALSE,results="hide",message=FALSE}
 library(knitr)
 library(ontoProc)
-cl = getOnto("cellOnto", "2021") # for continuity -- 	has_high_plasma_membrane_amount: list
-#	has_low_plasma_membrane_amount: list are present in 2021 not 2022 - seems these have
-# moved to RO (relations ontology)
-#> grep("plasma", nn, value=TRUE)
-#                       RO:0002104                        RO:0015015 
-#       "has plasma membrane part" "has high plasma membrane amount" 
-#                       RO:0015016 
-# "has low plasma membrane amount" 
-#
-go = getOnto("goOnto", "2021")
-pr = getOnto("Pronto", "2021") # legacy
-library(ontologyPlot)
-library(BiocStyle)
-library(SingleCellExperiment)
-library(celldex)
 ```
+
 ```{r setup2, message=FALSE}
 library(ontoProc)
 library(ontologyPlot)
 library(BiocStyle)  # for package references
-cl = getOnto("cellOnto", "2023") # for continuity -- 	has_high_plasma_membrane_amount: list
-go = getOnto("goOnto", "2023")  # if updated, some assertions will fail...
-pr = getOnto("PROnto", "2023")  # important case change
+cl = getOnto("cellOnto", "2021") # for continuity -- 	has_high_plasma_membrane_amount: list
+go = getOnto("goOnto", "2021")  # if updated, some assertions will fail...
+pr = getOnto("Pronto", "2021")  # important case change
 ```
 
 
